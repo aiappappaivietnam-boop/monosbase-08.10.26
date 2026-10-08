@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = Number(process.env.PORT) || 4307;
+const PORT = Number(process.argv.find((arg) => arg.startsWith('--port='))?.split('=')[1]) || Number(process.env.PORT) || 4307;
 const ROOT = __dirname;
 
 const MIME_TYPES = {
