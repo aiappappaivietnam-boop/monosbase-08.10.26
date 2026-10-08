@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3890;
+const PORT = Number(process.env.PORT) || 4307;
 const ROOT = __dirname;
 
 const MIME_TYPES = {
@@ -52,6 +52,11 @@ const server = http.createServer((req, res) => {
       res.end(data);
     });
   });
+});
+
+server.on('error', (error) => {
+  console.error(error);
+  process.exitCode = 1;
 });
 
 server.listen(PORT, '0.0.0.0', () => {

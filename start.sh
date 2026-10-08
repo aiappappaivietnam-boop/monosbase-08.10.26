@@ -1,2 +1,2 @@
 #!/bin/bash
-nohup python3 -m http.server 3890 --bind 0.0.0.0 > server.log 2>&1 &
+PORT=${PORT:-4307} nohup node server.js > server.log 2>&1 &
